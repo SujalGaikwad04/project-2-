@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Portfolio — Editkaro.in | Video Editing Showcase</title>
+  <meta name="description" content="Explore Editkaro.in's portfolio of cinematic video edits — short form reels, gaming videos, football edits, ecommerce ads, documentaries, anime, and more.">
+  <meta property="og:title" content="Portfolio — Editkaro.in">
+  <meta property="og:description" content="Browse our video editing portfolio across 9 creative categories.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://editkaro.in/portfolio.html">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/footer.css">
+  <link rel="stylesheet" href="css/portfolio.css">
+
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23E53935'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='18' fill='white'>EK</text></svg>">
+</head>
+<body>
+
+<div class="noise-overlay" aria-hidden="true"></div>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<!-- NAVBAR -->
+<header class="navbar" role="banner">
+  <div class="navbar__inner">
+    <a href="index.html" class="navbar__logo" aria-label="Editkaro.in Home">
+      <span class="navbar__logo-mark" aria-hidden="true">▶</span>
+      Editkaro<span class="dot">.</span>in
+    </a>
+    <nav class="navbar__nav" aria-label="Primary navigation">
+      <a href="index.html"     class="navbar__link">Home</a>
+      <a href="portfolio.html" class="navbar__link">Portfolio</a>
+      <a href="about.html"     class="navbar__link">About</a>
+      <a href="contact.html"   class="navbar__link">Contact</a>
+    </nav>
+    <div class="navbar__actions">
+      <a href="contact.html" class="btn btn-primary navbar__cta">Get Started</a>
+    </div>
+    <button class="navbar__hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<div class="navbar__mobile" id="mobileMenu" role="dialog" aria-modal="true" aria-label="Navigation menu">
+  <a href="index.html"     class="navbar__mobile-link">Home</a>
+  <a href="portfolio.html" class="navbar__mobile-link">Portfolio</a>
+  <a href="about.html"     class="navbar__mobile-link">About</a>
+  <a href="contact.html"   class="navbar__mobile-link">Contact</a>
+  <div class="navbar__mobile-bottom">
+    <span style="font-family:var(--font-display);font-size:1.2rem;color:var(--text-muted);">Editkaro.in</span>
+    <div class="navbar__mobile-social">
+      <a href="#" target="_blank" rel="noopener">Instagram</a>
+      <a href="#" target="_blank" rel="noopener">YouTube</a>
+    </div>
+  </div>
+</div>
+
+<main id="main-content">
+
+<!-- PAGE HERO -->
+<section class="port-hero" aria-label="Portfolio page header">
+  <div class="container">
+    <span class="section-label reveal" style="justify-content:center;">Our Work</span>
+    <h1 class="port-hero__title reveal delay-1">
+      Creative<br><em>Portfolio</em>
+    </h1>
+    <p class="port-hero__sub reveal delay-2">
+      Explore our work across 9 categories — from cinematic brand videos to viral social reels,
+      every project crafted with precision and purpose.
+    </p>
+  </div>
+</section>
+
+<!-- CONTROLS -->
+<div class="port-controls" role="search" aria-label="Filter and search portfolio">
+  <div class="container">
+    <div class="port-controls__inner">
+      <div class="port-filters" role="group" aria-label="Filter by category">
+        <button class="port-filter-btn active" data-filter="all" id="filterAll">All Work</button>
+        <button class="port-filter-btn" data-filter="short-form" id="filterShort">Short Form</button>
+        <button class="port-filter-btn" data-filter="long-form" id="filterLong">Long Form</button>
+        <button class="port-filter-btn" data-filter="gaming" id="filterGaming">Gaming</button>
+        <button class="port-filter-btn" data-filter="football" id="filterFootball">Football</button>
+        <button class="port-filter-btn" data-filter="ecommerce" id="filterEcom">eCommerce</button>
+        <button class="port-filter-btn" data-filter="documentary" id="filterDoc">Documentary</button>
+        <button class="port-filter-btn" data-filter="color-grading" id="filterColor">Color Grading</button>
+        <button class="port-filter-btn" data-filter="anime" id="filterAnime">Anime</button>
+      </div>
+
+      <div class="port-search" role="search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/>
+        </svg>
+        <label for="portSearch" class="sr-only">Search portfolio</label>
+        <input
+          type="search"
+          id="portSearch"
+          class="port-search__input"
+          placeholder="Search projects..."
+          autocomplete="off"
+          spellcheck="false"
+        >
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO GRID -->
+<section class="port-section" aria-label="Portfolio grid">
+  <div class="container">
+    <div class="port-count" aria-live="polite">
+      <p class="port-count__text" id="portCount">Showing <span>15</span> of 15 projects</p>
+    </div>
+
+    <div class="port-grid" id="portfolioGrid" role="list" aria-label="Portfolio items">
+      <!-- Rendered by portfolio.js -->
+    </div>
+
+    <!-- Empty state -->
+    <div class="port-empty" id="portEmpty" role="status" aria-live="polite">
+      <div class="port-empty__icon" aria-hidden="true">🎬</div>
+      <p class="port-empty__text">No projects found. Try a different search or filter.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CTA STRIP -->
+<section class="subscription section--sm" aria-label="Start a project">
+  <div class="container">
+    <div class="subscription__inner reveal">
+      <span class="section-label" style="justify-content:center;">Ready to Create?</span>
+      <h2 class="subscription__title" style="font-size:clamp(1.8rem,4vw,2.4rem);">
+        Let's build something<br>extraordinary together
+      </h2>
+      <p class="subscription__sub">Tell us about your project and we'll get back within 24 hours.</p>
+      <div style="margin-top:32px;">
+        <a href="contact.html" class="btn btn-primary" id="portCtaBtn" style="font-size:1rem;padding:16px 36px;">
+          Start Your Project →
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- VIDEO MODAL -->
+<div class="modal-overlay" id="videoModal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal">
+    <div class="modal__header">
+      <div>
+        <div class="modal__title" id="modalTitle">Project Title</div>
+        <div class="modal__cat">Category</div>
+      </div>
+      <button class="modal__close" aria-label="Close modal">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+
+    <div class="modal__video">
+      <img src="" alt="" loading="lazy">
+      <div class="modal__video-overlay">
+        <button class="modal__play-btn" aria-label="Play video">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <span class="modal__play-label">Preview</span>
+      </div>
+    </div>
+
+    <div class="modal__footer">
+      <div class="modal__tags"></div>
+      <a href="contact.html" class="btn btn-primary" style="font-size:0.82rem;padding:10px 20px;">
+        Get Similar →
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer class="footer" role="contentinfo">
+  <div class="container">
+    <div class="footer__grid">
+      <div class="footer__brand">
+        <a href="index.html" class="footer__logo">
+          <span class="footer__logo-mark" aria-hidden="true">▶</span>
+          Editkaro.in
+        </a>
+        <p class="footer__tagline">India's premium video editing &amp; social media marketing agency. We make your content impossible to ignore.</p>
+        <div class="footer__social" aria-label="Social media links">
+          <a href="#" class="footer__social-link" aria-label="Instagram" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1112.63 8 4 4 0 0116 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="YouTube" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M22.54 6.42a2.78 2.78 0 00-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 00-1.95 1.96A29 29 0 001 12a29 29 0 00.46 5.58A2.78 2.78 0 003.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 001.95-1.95A29 29 0 0023 12a29 29 0 00-.46-5.58z"/><polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="LinkedIn" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          </a>
+          <a href="#" class="footer__social-link" aria-label="Twitter" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+        </div>
+      </div>
+      <nav aria-label="Quick links">
+        <div class="footer__col-title">Quick Links</div>
+        <ul class="footer__links">
+          <li><a href="index.html" class="footer__link">Home</a></li>
+          <li><a href="portfolio.html" class="footer__link">Portfolio</a></li>
+          <li><a href="about.html" class="footer__link">About Us</a></li>
+          <li><a href="contact.html" class="footer__link">Contact</a></li>
+        </ul>
+      </nav>
+      <nav aria-label="Services">
+        <div class="footer__col-title">Services</div>
+        <ul class="footer__links">
+          <li><a href="#" class="footer__link">Reels Editing</a></li>
+          <li><a href="#" class="footer__link">YouTube Editing</a></li>
+          <li><a href="#" class="footer__link">eCommerce Ads</a></li>
+          <li><a href="#" class="footer__link">Color Grading</a></li>
+          <li><a href="#" class="footer__link">Motion Graphics</a></li>
+        </ul>
+      </nav>
+      <div>
+        <div class="footer__col-title">Get In Touch</div>
+        <div class="footer__contact-item">
+          <div class="footer__contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          </div>
+          <div><strong class="footer__contact-text">Email</strong><span class="footer__contact-text">hello@editkaro.in</span></div>
+        </div>
+        <div class="footer__contact-item">
+          <div class="footer__contact-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.37 9.5a19.82 19.82 0 01-3.07-8.67A2 2 0 012.32 2H5.5a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 9.5a16 16 0 006.36 6.36l.85-.86a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+          </div>
+          <div><strong class="footer__contact-text">WhatsApp</strong><span class="footer__contact-text">+91 98765 43210</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <p class="footer__copy">© 2024 <span>Editkaro.in</span>. All rights reserved.</p>
+      <div class="footer__bottom-links">
+        <a href="#" class="footer__bottom-link">Privacy Policy</a>
+        <a href="#" class="footer__bottom-link">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<style>.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;}</style>
+
+<script src="js/global.js" defer></script>
+<script src="js/portfolio.js" defer></script>
+
+<!-- Apply URL filter param on load -->
+<script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const params = new URLSearchParams(window.location.search);
+    const filter = params.get('filter');
+    if (filter) {
+      const btn = document.querySelector(`[data-filter="${filter}"]`);
+      if (btn) btn.click();
+    }
+  });
+</script>
+</body>
+</html>

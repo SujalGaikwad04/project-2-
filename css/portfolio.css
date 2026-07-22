@@ -1,0 +1,407 @@
+/* ========================================================
+   PORTFOLIO PAGE STYLES
+   ======================================================== */
+
+/* ─── PAGE HERO ──────────────────────────────────────── */
+.port-hero {
+  padding: 160px 0 80px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.port-hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 400px;
+  background: radial-gradient(ellipse, rgba(229,57,53,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.port-hero__title {
+  font-family: var(--font-display);
+  font-size: clamp(3rem, 8vw, 7rem);
+  line-height: 0.95;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 20px;
+}
+
+.port-hero__title em {
+  font-style: normal;
+  color: var(--accent);
+}
+
+.port-hero__sub {
+  color: var(--text-muted);
+  max-width: 480px;
+  margin: 0 auto;
+  font-size: 1.05rem;
+}
+
+/* ─── CONTROLS ───────────────────────────────────────── */
+.port-controls {
+  padding: 40px 0;
+  position: sticky;
+  top: 60px;
+  z-index: 100;
+  background: rgba(11,11,11,0.95);
+  backdrop-filter: blur(20px);
+  border-bottom: 1px solid var(--border);
+}
+
+.port-controls__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+
+.port-filters {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.port-filter-btn {
+  padding: 8px 16px;
+  border-radius: 100px;
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: transparent;
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: all var(--transition);
+  white-space: nowrap;
+}
+
+.port-filter-btn:hover {
+  border-color: var(--border-hover);
+  color: white;
+}
+
+.port-filter-btn.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: white;
+}
+
+.port-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--bg-3);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 10px 16px;
+  min-width: 220px;
+  transition: border-color var(--transition);
+}
+
+.port-search:focus-within {
+  border-color: var(--accent);
+}
+
+.port-search svg {
+  width: 16px;
+  height: 16px;
+  color: var(--text-subtle);
+  flex-shrink: 0;
+}
+
+.port-search__input {
+  background: none;
+  border: none;
+  outline: none;
+  color: white;
+  font-size: 0.875rem;
+  font-family: var(--font-ui);
+  width: 100%;
+}
+
+.port-search__input::placeholder { color: var(--text-subtle); }
+
+/* ─── PORTFOLIO GRID ─────────────────────────────────── */
+.port-section {
+  padding: 60px 0 120px;
+}
+
+.port-count {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 28px;
+}
+
+.port-count__text {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-family: var(--font-ui);
+}
+
+.port-count__text span { color: white; font-weight: 600; }
+
+.port-grid {
+  columns: 3 320px;
+  gap: 16px;
+}
+
+.port-grid-item {
+  break-inside: avoid;
+  margin-bottom: 16px;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  position: relative;
+  cursor: pointer;
+}
+
+.port-grid-item img {
+  width: 100%;
+  display: block;
+  transition: transform 0.6s ease;
+}
+
+.port-grid-item:hover img { transform: scale(1.05); }
+
+.port-grid-item__overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, rgba(0,0,0,0.3) 50%, transparent 100%);
+  opacity: 0;
+  transition: opacity var(--transition);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+}
+
+.port-grid-item:hover .port-grid-item__overlay { opacity: 1; }
+
+.port-grid-item__top {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.port-grid-item__bottom {}
+
+.port-grid-item__play {
+  width: 48px;
+  height: 48px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-self: center;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  transition: all var(--transition);
+  box-shadow: 0 4px 20px rgba(229,57,53,0.5);
+}
+
+.port-grid-item:hover .port-grid-item__play {
+  opacity: 1;
+  transform: translate(-50%, -50%) scale(1);
+}
+
+.port-grid-item__play svg { width: 18px; height: 18px; color: white; margin-left: 3px; }
+
+.port-grid-item__title {
+  font-weight: 700;
+  font-family: var(--font-ui);
+  font-size: 0.95rem;
+  margin-bottom: 4px;
+}
+
+.port-grid-item__cat {
+  font-size: 0.7rem;
+  color: var(--accent);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Empty state */
+.port-empty {
+  text-align: center;
+  padding: 80px 0;
+  display: none;
+}
+
+.port-empty.visible { display: block; }
+
+.port-empty__icon {
+  font-size: 3rem;
+  margin-bottom: 16px;
+}
+
+.port-empty__text {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+/* ─── VIDEO MODAL ────────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.92);
+  z-index: 9000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.35s ease;
+  backdrop-filter: blur(8px);
+  padding: 20px;
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.modal {
+  background: var(--bg-2);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  width: 100%;
+  max-width: 900px;
+  overflow: hidden;
+  transform: scale(0.92);
+  transition: transform 0.35s ease;
+  box-shadow: var(--shadow-lg);
+}
+
+.modal-overlay.open .modal {
+  transform: scale(1);
+}
+
+.modal__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--border);
+}
+
+.modal__title {
+  font-weight: 700;
+  font-family: var(--font-ui);
+  font-size: 1rem;
+}
+
+.modal__cat {
+  font-size: 0.75rem;
+  color: var(--accent);
+  font-family: var(--font-ui);
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.modal__close {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--bg-4);
+  border: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition);
+  flex-shrink: 0;
+}
+
+.modal__close:hover { background: var(--accent); border-color: var(--accent); }
+.modal__close svg { width: 16px; height: 16px; color: white; }
+
+.modal__video {
+  aspect-ratio: 16/9;
+  background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.modal__video img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal__video-overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal__play-btn {
+  width: 72px;
+  height: 72px;
+  background: var(--accent);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 0 40px rgba(229,57,53,0.5);
+  transition: transform var(--transition);
+  animation: pulse 2.5s ease infinite;
+}
+
+.modal__play-btn:hover { transform: scale(1.1); }
+.modal__play-btn svg { width: 28px; height: 28px; color: white; margin-left: 4px; }
+
+.modal__play-label {
+  font-family: var(--font-ui);
+  font-size: 0.8rem;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.modal__footer {
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.modal__tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+/* ─── RESPONSIVE ─────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .port-grid { columns: 2 260px; }
+}
+
+@media (max-width: 768px) {
+  .port-controls { top: 56px; padding: 20px 0; }
+  .port-controls__inner { gap: 12px; }
+  .port-filters { gap: 6px; }
+  .port-filter-btn { padding: 7px 12px; font-size: 0.75rem; }
+  .port-search { min-width: unset; width: 100%; }
+  .port-grid { columns: 1; }
+}
