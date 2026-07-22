@@ -54,28 +54,82 @@
 
 // ─── SUBSCRIPTION FORM ────────────────────────────────
 (function initSubscription() {
-  const form = document.querySelector('.subscription__form');
-  const input = document.querySelector('.subscription__input');
-  const btn   = document.querySelector('.subscription__btn');
+  const form      = document.getElementById('subscriptionForm');
+  const input     = document.getElementById('subEmail');
+  const btn       = document.getElementById('subBtn');
+  const errorEl   = document.getElementById('subEmailError');
+  const successEl = document.getElementById('subSuccess');
+  const netErrEl  = document.getElementById('subNetError');
 
   if (!form) return;
 
-  // ── Google Sheets ready ──
-  // Replace this URL with your deployed Google Apps Script URL:
+  // ─────────────────────────────────────────────────────
+  // GOOGLE SHEETS INTEGRATION
+  // Step 1: Create a Google Sheet with columns: Email | Timestamp | Source
+  // Step 2: In Google Sheets → Extensions → Apps Script, paste:
+  //
+  //   function doPost(e) {
+  //     var sheet = SpreadsheetApp.getActiveSpreadsheet().getActiveSheet();
+  //     var data  = JSON.parse(e.postData.contents);
+  //     sheet.appendRow([data.email, data.timestamp, data.source]);
+  //     return ContentService.createTextOutput('OK');
+  //   }
+  //
+  // Step 3: Deploy → New Deployment → Web App → Anyone can access
+  // Step 4: Replace the URL below with your deployed Apps Script URL:
+  // ─────────────────────────────────────────────────────
   const APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+
+  // Email validation helper — RFC 5322 simplified
+  const isValidEmail = (val) =>
+    /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/.test(val);
+
+  // Hide all feedback messages
+  const hideAll = () => {
+    [errorEl, successEl, netErrEl].forEach(el => { if (el) el.style.display = 'none'; });
+  };
+
+  // Show a specific feedback element
+  const show = (el, msg) => {
+    if (!el) return;
+    if (msg) el.textContent = msg;
+    el.style.display = 'block';
+  };
+
+  // Reset button to default state
+  const resetBtn = () => {
+    btn.textContent = 'Subscribe';
+    btn.disabled = false;
+  };
+
+  // Clear error on typing
+  input.addEventListener('input', () => {
+    input.style.borderColor = '';
+    if (errorEl) errorEl.style.display = 'none';
+  });
 
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
+    hideAll();
 
     const email = input.value.trim();
-    if (!email || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+
+    // Validate
+    if (!email) {
       input.style.borderColor = '#E53935';
+      show(errorEl, 'Please enter your email address.');
       input.focus();
-      setTimeout(() => input.style.borderColor = '', 2000);
+      return;
+    }
+    if (!isValidEmail(email)) {
+      input.style.borderColor = '#E53935';
+      show(errorEl, 'Please enter a valid email address (e.g. name@domain.com).');
+      input.focus();
       return;
     }
 
-    btn.textContent = 'Subscribing...';
+    // Loading state
+    btn.textContent = 'Subscribing\u2026';
     btn.disabled = true;
 
     try {
@@ -84,23 +138,32 @@
           method: 'POST',
           mode: 'no-cors',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ email, timestamp: new Date().toISOString(), source: 'website_subscription' }),
+          body: JSON.stringify({
+            email,
+            timestamp: new Date().toISOString(),
+            source: 'editkaro_subscription',
+          }),
         });
       } else {
-        // Demo mode
-        console.log('Subscription (demo):', email);
+        // Demo mode — simulates network delay
+        console.log('[Editkaro] Subscription demo:', { email, timestamp: new Date().toISOString() });
         await new Promise(r => setTimeout(r, 800));
       }
 
-      btn.textContent = '✓ Subscribed!';
+      // Success
       input.value = '';
+      input.style.borderColor = '';
+      show(successEl);
+      btn.textContent = '\u2713 Subscribed!';
       setTimeout(() => {
-        btn.textContent = 'Subscribe';
-        btn.disabled = false;
-      }, 3000);
-    } catch {
-      btn.textContent = 'Try again';
-      btn.disabled = false;
+        resetBtn();
+        if (successEl) successEl.style.display = 'none';
+      }, 5000);
+
+    } catch (err) {
+      console.error('[Editkaro] Subscription error:', err);
+      show(netErrEl);
+      resetBtn();
     }
   });
 })();

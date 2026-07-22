@@ -3,14 +3,54 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Editkaro.in — Video Editing & Social Media Marketing Agency</title>
-  <meta name="description" content="Editkaro.in is a premium video editing and social media marketing agency. We create cinematic videos that capture attention and drive real results for brands.">
-  <meta name="keywords" content="video editing, social media marketing, reels editing, motion graphics, YouTube editing, brand ads, ecommerce ads, India">
-  <meta property="og:title" content="Editkaro.in — Video Editing Agency">
-  <meta property="og:description" content="We create videos that capture attention and drive results.">
+  <title>Editkaro.in — Video Editing &amp; Social Media Marketing Agency India</title>
+  <meta name="description" content="Editkaro.in is India's premier video editing and social media marketing agency. We craft cinematic reels, brand ads, YouTube videos, and motion graphics that capture attention and drive real results.">
+  <meta name="keywords" content="video editing India, social media marketing, reels editing, motion graphics, YouTube editing, brand ads, ecommerce video ads, color grading India">
+  <meta name="robots" content="index, follow">
+  <meta name="theme-color" content="#E53935">
+  <meta name="author" content="Editkaro.in">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Editkaro.in — Video Editing &amp; Social Media Marketing Agency">
+  <meta property="og:description" content="India's premier video editing agency. Cinematic reels, brand ads, YouTube videos and motion graphics that capture attention and drive results.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://editkaro.in">
+  <meta property="og:site_name" content="Editkaro.in">
+  <meta property="og:image" content="https://editkaro.in/assets/images/hero_editing_preview_1784733836723.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IN">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Editkaro.in — Video Editing Agency">
+  <meta name="twitter:description" content="We create videos that capture attention and drive results.">
+  <meta name="twitter:image" content="https://editkaro.in/assets/images/hero_editing_preview_1784733836723.png">
+
   <link rel="canonical" href="https://editkaro.in">
+
+  <!-- JSON-LD Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "Editkaro.in",
+    "url": "https://editkaro.in",
+    "logo": "https://editkaro.in/assets/images/hero_editing_preview_1784733836723.png",
+    "description": "India's premier video editing and social media marketing agency.",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Mumbai",
+      "addressRegion": "Maharashtra",
+      "addressCountry": "IN"
+    },
+    "email": "hello@editkaro.in",
+    "telephone": "+91-98765-43210",
+    "areaServed": "IN",
+    "serviceType": ["Video Editing", "Social Media Marketing", "Motion Graphics", "Color Grading"],
+    "sameAs": []
+  }
+  </script>
 
   <!-- Preconnect -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -22,7 +62,7 @@
   <link rel="stylesheet" href="css/footer.css">
   <link rel="stylesheet" href="css/home.css">
 
-  <!-- Favicon placeholder -->
+  <!-- Favicon -->
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23E53935'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='sans-serif' font-weight='900' font-size='18' fill='white'>EK</text></svg>">
 </head>
 <body>
@@ -567,9 +607,15 @@
           placeholder="Your email address"
           autocomplete="email"
           required
+          aria-required="true"
+          aria-describedby="subEmailError"
         >
         <button type="submit" class="subscription__btn" id="subBtn">Subscribe</button>
       </form>
+      <!-- Inline feedback messages -->
+      <p id="subEmailError" class="sub-feedback sub-feedback--error" role="alert" aria-live="polite" style="display:none;"></p>
+      <p id="subSuccess" class="sub-feedback sub-feedback--success" role="status" aria-live="polite" style="display:none;">🎉 You're subscribed! Watch your inbox for updates.</p>
+      <p id="subNetError" class="sub-feedback sub-feedback--error" role="alert" aria-live="polite" style="display:none;">Something went wrong. Please try again.</p>
     </div>
   </div>
 </section>

@@ -459,3 +459,27 @@ p  { font-size: 1rem; color: var(--text-muted); line-height: 1.7; }
 @media (max-width: 480px) {
   .grid-4    { grid-template-columns: 1fr; }
 }
+
+/* ─── SUBSCRIPTION FEEDBACK MESSAGES ─────────────────── */
+.sub-feedback {
+  display: none;
+  font-family: var(--font-ui);
+  font-size: 0.85rem;
+  margin-top: 12px;
+  text-align: center;
+  padding: 10px 16px;
+  border-radius: var(--radius-sm);
+  animation: fadeUp 0.3s ease;
+}
+
+.sub-feedback--error {
+  color: #E53935;
+  background: rgba(229, 57, 53, 0.08);
+  border: 1px solid rgba(229, 57, 53, 0.2);
+}
+
+.sub-feedback--success {
+  color: #4CAF50;
+  background: rgba(76, 175, 80, 0.08);
+  border: 1px solid rgba(76, 175, 80, 0.2);
+}
