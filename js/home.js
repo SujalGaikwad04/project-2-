@@ -54,12 +54,12 @@
 
 // ─── SUBSCRIPTION FORM ────────────────────────────────
 (function initSubscription() {
-  const form      = document.getElementById('subscriptionForm');
-  const input     = document.getElementById('subEmail');
-  const btn       = document.getElementById('subBtn');
-  const errorEl   = document.getElementById('subEmailError');
+  const form = document.getElementById('subscriptionForm');
+  const input = document.getElementById('subEmail');
+  const btn = document.getElementById('subBtn');
+  const errorEl = document.getElementById('subEmailError');
   const successEl = document.getElementById('subSuccess');
-  const netErrEl  = document.getElementById('subNetError');
+  const netErrEl = document.getElementById('subNetError');
 
   if (!form) return;
 

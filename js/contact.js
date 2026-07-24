@@ -28,7 +28,7 @@
 //
 // Step 4: Copy the Web App URL and paste it below:
 //
-const CONTACT_APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
+const CONTACT_APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz4mDnR4pB2cR5ZChcI1lsEmBx5SiuaaecYTf_H54N2sMT1Knwi_pcKcJGmNzzo2K7DgA/exec';
 
 // ─── VALIDATION HELPERS ────────────────────────────────
 
@@ -39,24 +39,24 @@ const CONTACT_APPS_SCRIPT_URL = 'YOUR_GOOGLE_APPS_SCRIPT_URL_HERE';
 function validateField(input, errorEl) {
   const value = input.value.trim();
   let valid = true;
-  let msg   = '';
+  let msg = '';
 
   if (input.required && !value) {
     valid = false;
-    msg   = 'This field is required.';
+    msg = 'This field is required.';
   } else if (input.type === 'email' && value) {
     // RFC 5322 simplified — stricter than the basic version
     const emailRe = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*\.[a-zA-Z]{2,}$/;
     if (!emailRe.test(value)) {
       valid = false;
-      msg   = 'Please enter a valid email address (e.g. name@domain.com).';
+      msg = 'Please enter a valid email address (e.g. name@domain.com).';
     }
   } else if (input.name === 'phone' && value) {
     // Accepts: +91 98765 43210, (022) 12345678, 9876543210, +1-800-555-0100
     const phoneRe = /^[+]?[\d\s\-().]{7,20}$/;
     if (!phoneRe.test(value)) {
       valid = false;
-      msg   = 'Please enter a valid phone number.';
+      msg = 'Please enter a valid phone number.';
     }
   }
 
@@ -75,10 +75,10 @@ function validateField(input, errorEl) {
 
 // ─── CONTACT FORM ─────────────────────────────────────
 (function initContactForm() {
-  const form      = document.getElementById('contactForm');
+  const form = document.getElementById('contactForm');
   const successEl = document.getElementById('formSuccess');
   const submitBtn = document.getElementById('formSubmitBtn');
-  const netErrEl  = document.getElementById('formNetError');
+  const netErrEl = document.getElementById('formNetError');
 
   if (!form) return;
 
@@ -118,13 +118,13 @@ function validateField(input, errorEl) {
       .join(', ');
 
     const payload = {
-      name:      form.querySelector('[name="name"]').value.trim(),
-      email:     form.querySelector('[name="email"]').value.trim(),
-      phone:     form.querySelector('[name="phone"]').value.trim(),
-      message:   form.querySelector('[name="message"]').value.trim(),
-      services:  services || 'Not specified',
+      name: form.querySelector('[name="name"]').value.trim(),
+      email: form.querySelector('[name="email"]').value.trim(),
+      phone: form.querySelector('[name="phone"]').value.trim(),
+      message: form.querySelector('[name="message"]').value.trim(),
+      services: services || 'Not specified',
       timestamp: new Date().toISOString(),
-      source:    'editkaro_contact_form',
+      source: 'editkaro_contact_form',
     };
 
     // Loading state
