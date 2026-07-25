@@ -6,13 +6,13 @@ A modern, responsive, and professional portfolio website developed for **Editkar
 
 ## 🌐 Live Demo
 
-🔗 **Website:** https://your-project.vercel.app
+🔗 **Website:** [https://your-project.vercel.app](https://project-2-alpha-gules.vercel.app/)
 
 ---
 
 ## 📂 GitHub Repository
 
-🔗 **Repository:** https://github.com/your-username/your-repository
+🔗 **Repository:** https://github.com/SujalGaikwad04/project-2-
 
 ---
 
