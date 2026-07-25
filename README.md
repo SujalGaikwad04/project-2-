@@ -200,7 +200,8 @@ Add screenshots here before submitting.
 
 ### Home Page
 
-![Home Page](screenshots/home.png)
+<img width="1917" height="912" alt="image" src="https://github.com/user-attachments/assets/a35d6c31-2df0-4fe4-b3a0-46911df9b107" />
+
 
 ### Portfolio
 
