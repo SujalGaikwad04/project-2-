@@ -194,29 +194,6 @@ git clone https://github.com/your-username/your-repository.git
 
 ---
 
-# 📸 Screenshots
-
-Add screenshots here before submitting.
-
-### Home Page
-
-<img width="1917" height="912" alt="image" src="https://github.com/user-attachments/assets/a35d6c31-2df0-4fe4-b3a0-46911df9b107" />
-
-
-### Portfolio
-
-![Portfolio](screenshots/portfolio.png)
-
-### Contact Page
-
-![Contact](screenshots/contact.png)
-
-### Google Sheets Integration
-
-![Google Sheets](screenshots/google-sheet.png)
-
----
-
 # 🚧 Challenges Faced
 
 - Designing a professional UI/UX.
